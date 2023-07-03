@@ -12,9 +12,9 @@ attendees <- c("Marnie Dickinson", "Dr. Marlin Wilderman")
 
 # Informações sobre o curso ----------------------------------------------------------------------------------------------------------------
 
-workshop <- "Nome do Workshop"
+workshop <- "Package development workshop"
 date <- as.Date("2018-01-01")
-location <- "Local do Workshop"
+location <- "University of Lorraine"
 
 # Conteúdos do currículo -------------------------------------------------------------------------------------------------------------------
 
@@ -31,10 +31,11 @@ readLines(curriculum)
 
 # Informações sobre a organização ----------------------------------------------------------------------------------------------------------
 
-certifier <- "Jeanne Raquel de Andrade Franco"
-credentials <- "R-Ladies Natal"
-organization <- "Organização Mundial com a missão de promover a diversidade de gêneros na comunidade do R."
-organization_url <- "https://rladies.org/"
+certifier <- "Zaire Crooks"
+credentials <- "Forwards teaching team member"
+organization <- "Forwards, the R Foundation taskforce for women and other
+under-represented groups"
+organization_url <- "forwards.github.io/"
 
 # Gerar certificado ------------------------------------------------------------------------------------------------------------------------
 
