@@ -37,7 +37,7 @@ params:
     input: text
   curriculum:
     label: Path to file containing curriculum content
-    value: !r system.file("rmarkdown", "templates", "workshop_certificate", "resources", "default_workshop_contents.md")
+    value: !r system.file("rmarkdown", "templates", "workshop_certificate", "resources")
     input: file
   certifier:
     label: Certifying person full name
@@ -64,8 +64,8 @@ params:
     input: numeric
   border_image:
     label: Path to file containing border image
-    value: !r system.file("exrdata", "assets", "magma_border.pdf")
-    input: text
+    value: !r system.file("rmarkdown", "extdata","assets")
+    input: file
   papersize:
     label: Paper size of output PDF
     value: a4paper
@@ -78,7 +78,7 @@ classoption: "`r params$papersize`"
 organization: "`r gsub("[\r\n]", " ", params$organization)`"
 organization_url: "`r params$organization_url`"
 border_image: "`r 'true'[params$border_image]`"
-curriculum: "`r params$curriculum`"
+curriculum: "`r 'true'[params$curriculum]`"
 ---
 
 ```{r setup, include=FALSE}
@@ -132,7 +132,7 @@ cat(params$curriculum_title, "\n", sep = "")
 \normalsize
 \begin{varwidth}{0.8\textwidth}
 ```{r curriculum, results = 'asis'}
-cat(params$curriculum, sep = "\n\n")
+cat(params$curriculum, sep = "\n")
 ```
 
 \end{varwidth}
