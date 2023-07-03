@@ -17,7 +17,7 @@ params:
     input: text
   action_text: 
     label: Action text between name and workshop title.
-    value: "participou do curso"
+    value: "participou do meetup"
     input: text
   workshop:
     label: Workshop title
@@ -29,7 +29,7 @@ params:
     input: date
   location:
     label: Location of workshop
-    value: Natal/RN
+    value: R-Ladies Natal
     input: text
   curriculum_title:
     lable: Header before curriculum content
@@ -44,7 +44,7 @@ params:
     value: Jeanne Raquel de Andrade Franco
   credentials:
     label: Certifying person credentials
-    value: Organizadora R-Ladies Natal
+    value: Organizadora 
     input: text
   organization:
     label: Decription of the organization running the workshops
