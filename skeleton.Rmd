@@ -1,0 +1,155 @@
+---
+output: 
+    pdf_document: 
+        latex_engine: xelatex
+        template: template.tex
+        keep_tex: true
+documentclass: extarticle        
+fontsize: 14pt
+params:
+  title: 
+    label: Title for certificate
+    value: "CERTIFICADO DE CONCLUSÃO"
+    input: text
+  attendee:
+    label: Attendee
+    value: Nome do participante
+    input: text
+  action_text: 
+    label: Action text between name and workshop title.
+    value: "participou do curso"
+    input: text
+  workshop:
+    label: Workshop title
+    value: Nome do curso
+    input: text
+  date: 
+    label: Date of workshop
+    value: !r format(Sys.time(), "%d %B, %Y")
+    input: date
+  location:
+    label: Location of workshop
+    value: Natal/RN
+    input: text
+  curriculum_title:
+    lable: Header before curriculum content
+    value: "Conteúdos do curso:"
+    input: text
+  curriculum:
+    label: Path to file containing curriculum content
+    value: !r system.file("rmarkdown", "templates", "workshop_certificate", "resources", "default_workshop_contents.md")
+    input: file
+  certifier:
+    label: Certifying person full name
+    value: Jeanne Raquel de Andrade Franco
+  credentials:
+    label: Certifying person credentials
+    value: Organizadora R-Ladies Natal
+    input: text
+  organization:
+    label: Decription of the organization running the workshops
+    value: R-Ladies é uma organização mundial que tem a missão de promover a diversidade de gêneros na comunidade do R
+    input: text
+  organization_url:
+    label: Organization URL without https://
+    value: rladies.org/
+    input: text
+  signature:
+    label: Path to file containing image of signature
+    value: NULL
+    input: file
+  signature_skip:
+    label: Space to skip between signature image and signature line, in cm.
+    value: -0.4
+    input: numeric
+  border_image:
+    label: Path to file containing border image
+    value: !r system.file("exrdata", "assets", "magma_border.pdf")
+    input: text
+  papersize:
+    label: Paper size of output PDF
+    value: a4paper
+    input: text    
+---
+
+---
+title: "`r params$title`"
+classoption: "`r params$papersize`"
+organization: "`r gsub("[\r\n]", " ", params$organization)`"
+organization_url: "`r params$organization_url`"
+border_image: "`r 'true'[params$border_image]`"
+curriculum: "`r params$curriculum`"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      message = FALSE,
+                      warning = FALSE, 
+                      fig.align = "center")
+```
+
+\begin{center}
+
+\Large \textbf{
+```{r attendee, results = 'asis'}
+# thanks so much https://stackoverflow.com/questions/46226364/passing-parameters-in-rmarkdown-to-the-text-or-headings
+cat(params$attendee)
+```
+}
+
+\vspace{1.3cm}
+
+\normalsize
+```{r action_text, results = 'asis'}
+cat(as.character(params$action_text), "\n")
+```
+
+\vspace{0.8cm}
+
+\Large \textbf{
+```{r workshop, results = 'asis'}
+cat(as.character(params$workshop), "\n")
+```
+}
+\normalsize
+
+\large \textbf{
+```{r location, results = 'asis'}
+cat(as.character(params$date), " - ", params$location, "\n", sep = "")
+```
+}
+
+\vspace{0.5cm}
+
+\Large \textbf{
+```{r curriculum_title, results = 'asis'}
+cat(params$curriculum_title, "\n", sep = "")
+```
+}
+
+\vspace{0.5cm}
+
+\normalsize
+\begin{varwidth}{0.8\textwidth}
+```{r curriculum, results = 'asis'}
+cat(params$curriculum, sep = "\n\n")
+```
+
+\end{varwidth}
+
+\vfill
+
+
+```{r signature, results = 'asis'}
+if (!is.null(params$signature)){
+  cat("\\includegraphics[height=2\\baselineskip]{signature} \\vspace{", 
+      params$signature_skip, "cm}")
+}
+```
+
+\rule[0in]{3in}{1pt}\\
+\textbf{`r params$certifier`\\
+        `r params$credentials`}\\
+\vspace{0.8cm}
+
+\end{center}
