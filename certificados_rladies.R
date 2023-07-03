@@ -12,9 +12,9 @@ attendees <- c("Marnie Dickinson", "Dr. Marlin Wilderman")
 
 # Informações sobre o curso ----------------------------------------------------------------------------------------------------------------
 
-workshop <- "Package development workshop"
+workshop <- "Nome do Workshop"
 date <- as.Date("2018-01-01")
-location <- "University of Lorraine"
+location <- "Local do Workshop"
 
 # Conteúdos do currículo -------------------------------------------------------------------------------------------------------------------
 
@@ -31,19 +31,19 @@ readLines(curriculum)
 
 # Informações sobre a organização ----------------------------------------------------------------------------------------------------------
 
-certifier <- "Zaire Crooks"
-credentials <- "Forwards teaching team member"
-organization <- "Forwards, the R Foundation taskforce for women and other
-under-represented groups"
-organization_url <- "forwards.github.io/"
+certifier <- "Jeanne Raquel de Andrade Franco"
+credentials <- "R-Ladies Natal"
+organization <- "Organização Mundial com a missão de promover a diversidade de gêneros na comunidade do R."
+organization_url <- "https://rladies.org/"
 
 # Gerar certificado ------------------------------------------------------------------------------------------------------------------------
 
-dir <- "C:/Users/jeann/Documents/R-Ladies Natal"
+dir <- "C:/Users/jeann/Documents/R-Ladies Natal/Certificados_R-Ladies_Natal"
 create_workshop_certificates(attendees, workshop, date, location,
                              curriculum, certifier, credentials,
                              organization, organization_url,
                              dir)
+
 #> 
 #> 
 #> processing file: skeleton.Rmd
