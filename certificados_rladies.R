@@ -13,8 +13,8 @@ attendees <- c("Marnie Dickinson", "Dr. Marlin Wilderman")
 # Informações sobre o curso ----------------------------------------------------------------------------------------------------------------
 
 workshop <- "Nome do curso"
-date <- as.Date("2023-07-02")
-location <- "Nome do local"
+date <- as.Date("02-07-2023")
+location <- "R-Ladies Natal"
 
 # Conteúdos do currículo -------------------------------------------------------------------------------------------------------------------
 
@@ -31,10 +31,10 @@ readLines(curriculum)
 
 # Informações sobre a organização ----------------------------------------------------------------------------------------------------------
 
-certifier <- "Jeanne Franco"
-credentials <- "Coorganizadora da R-Ladies Natal"
-organization <- "R-Ladies Natal"
-organization_url <- "forwards.github.io/"
+certifier <- "Jeanne Raquel de Andrade Franco"
+credentials <- "Coorganizadora"
+organization <- "R-Ladies Global"
+organization_url <- "rladies.org/"
 
 # Gerar certificado ------------------------------------------------------------------------------------------------------------------------
 
