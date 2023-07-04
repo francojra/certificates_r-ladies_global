@@ -89,7 +89,7 @@ knitr::opts_chunk$set(echo = FALSE,
 
 \begin{center}
 
-\Large \textbf{
+\Large \textbf \itshape{
 ```{r attendee, results = 'asis'}
 # thanks so much https://stackoverflow.com/questions/46226364/passing-parameters-in-rmarkdown-to-the-text-or-headings
 cat(params$attendee)
@@ -98,7 +98,7 @@ cat(params$attendee)
 
 \vspace{1.3cm}
 
-\normalsize
+\normalsize 
 ```{r action_text, results = 'asis'}
 cat(as.character(params$action_text), "\n")
 ```
