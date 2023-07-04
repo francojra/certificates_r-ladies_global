@@ -37,8 +37,8 @@ params:
     input: text
   curriculum:
     label: Path to file containing curriculum content
-    value: !r system.file("rmarkdown", "templates", "workshop_certificate", "resources", "default_workshop_contents.md")
-    input: file
+    value: "Conteúdo 1; Conteúdo 2; Conteúdo 3; Conteúdo 4; Conteúdo 5; Conteúdo 6; Conteúdo 7; Conteúdo 8."
+    input: text
   certifier:
     label: Certifying person full name
     value: Jeanne Raquel de Andrade Franco
