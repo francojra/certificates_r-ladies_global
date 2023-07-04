@@ -37,7 +37,7 @@ params:
     input: text
   curriculum:
     label: Path to file containing curriculum content
-    value: !r system.file("rmarkdown", "templates", "workshop_certificate", "resources")
+    value: !r system.file("rmarkdown", "templates", "workshop_certificate", "resources", "default_workshop_contents.md")
     input: file
   certifier:
     label: Certifying person full name
@@ -68,7 +68,7 @@ params:
     input: file
   papersize:
     label: Paper size of output PDF
-    value: a4paper
+    value: landscape
     input: text    
 ---
 
@@ -78,7 +78,6 @@ classoption: "`r params$papersize`"
 organization: "`r gsub("[\r\n]", " ", params$organization)`"
 organization_url: "`r params$organization_url`"
 border_image: "`r 'true'[params$border_image]`"
-curriculum: "`r 'true'[params$curriculum]`"
 ---
 
 ```{r setup, include=FALSE}
@@ -115,7 +114,7 @@ cat(as.character(params$workshop), "\n")
 
 \large \textbf{
 ```{r location, results = 'asis'}
-cat(as.character(params$date), " - ", params$location, "\n", sep = "")
+cat(as.character(params$date), " na comunidade ", params$location, "\n", sep = "")
 ```
 }
 
