@@ -89,7 +89,7 @@ knitr::opts_chunk$set(echo = FALSE,
 
 \begin{center}
 
-\Large \textbf \itshape{
+\Large \textbf \bfseries{
 ```{r attendee, results = 'asis'}
 # thanks so much https://stackoverflow.com/questions/46226364/passing-parameters-in-rmarkdown-to-the-text-or-headings
 cat(params$attendee)
@@ -114,7 +114,7 @@ cat(as.character(params$workshop), "\n")
 
 \large \textbf{
 ```{r location, results = 'asis'}
-cat(as.character(params$date), " na comunidade ", params$location, "\n", sep = "")
+cat("em ", as.character(params$date), " na comunidade ", params$location, "\n", sep = "")
 ```
 }
 
