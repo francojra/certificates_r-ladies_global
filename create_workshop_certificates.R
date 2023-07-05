@@ -54,7 +54,7 @@ create_workshop_certificates <- function(attendees,
                                          workshop, date, location,
                                          curriculum, certifier, credentials,
                                          organization, organization_url,
-                                         dir = ".",
+                                         dir = "C:/Users/jeann/Documents/R-Ladies Natal/certificados_rladies_natal",
                                          title = "CERTIFICADO DE CONCLUSÃO",
                                          action_text = "participou do curso",
                                          curriculum_title = "Conteúdos do curso:",
@@ -63,12 +63,9 @@ create_workshop_certificates <- function(attendees,
                                          papersize = "landscape",
                                          keep_tex = FALSE){
 
-    #if (!dir.exists(dir)) {
-     #   dir.create(dir)
-    #}
-
-    if (!System.IO.dir.exists(dir))
-    System.IO.dir.create(dir);
+    if (!dir.exists(dir)) {
+        dir.create(dir)
+    }
 
     temp_rmd <- copy_skeleton_file("skeleton.Rmd", dir)
     on.exit(file.remove(temp_rmd))
