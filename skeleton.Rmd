@@ -45,7 +45,7 @@ params:
     input: text
   certifier:
     label: Certifying person full name
-    value: Jeanne Raquel de Andrade Franco
+    value: Nome da organizadora do evento
   credentials:
     label: Certifying person credentials
     value: Organizadora 
@@ -110,7 +110,7 @@ cat(as.character(params$action_text), "\n")
 
 \vspace{0.5cm}
 
-\Large \textbf {
+\large \textbf {
 ```{r workshop, results = 'asis'}
 cat(as.character(params$workshop), "\n")
 ```
@@ -125,7 +125,7 @@ cat("em ", as.character(params$date), " na comunidade ", params$location, "\n", 
 
 \vspace{0.5cm}
 
-\normalsize {
+\large {
 ```{r carga horaria, results = 'asis'}
 cat(params$hora, "\n", sep = "")
 ```
