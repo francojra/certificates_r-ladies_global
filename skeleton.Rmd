@@ -31,6 +31,10 @@ params:
     label: Location of workshop
     value: R-Ladies Natal
     input: text
+  hora:
+    label: Carga horária do curso
+    value: "Carga horária: X horas"
+    input: text
   curriculum_title:
     lable: Header before curriculum content
     value: "Conteúdos do curso:"
@@ -89,29 +93,29 @@ knitr::opts_chunk$set(echo = FALSE,
 
 \begin{center}
 
-\Large \textbf {
+\LARGE \textbf {
 ```{r attendee, results = 'asis'}
 # thanks so much https://stackoverflow.com/questions/46226364/passing-parameters-in-rmarkdown-to-the-text-or-headings
 cat(params$attendee)
 ```
-}
+} 
 
-\vspace{1.3cm}
+\vspace{1cm}
 
-\normalsize \textbf {
+\large \textbf {
 ```{r action_text, results = 'asis'}
 cat(as.character(params$action_text), "\n")
 ```
 }
 
-\vspace{0.8cm}
+\vspace{0.5cm}
 
-\Large \textbf{
+\Large \textbf {
 ```{r workshop, results = 'asis'}
 cat(as.character(params$workshop), "\n")
 ```
 }
-\normalsize
+
 
 \large \textbf{
 ```{r location, results = 'asis'}
@@ -121,7 +125,16 @@ cat("em ", as.character(params$date), " na comunidade ", params$location, "\n", 
 
 \vspace{0.5cm}
 
-\Large \textbf {
+\normalsize {
+```{r carga horaria, results = 'asis'}
+cat(params$hora, "\n", sep = "")
+```
+
+}
+
+\vspace{0.5cm}
+
+\Large {
 ```{r curriculum_title, results = 'asis'}
 cat(params$curriculum_title, "\n", sep = "")
 ```
@@ -131,6 +144,7 @@ cat(params$curriculum_title, "\n", sep = "")
 
 \normalsize 
 \begin{varwidth}{0.8\textwidth}
+
 ```{r curriculum, results = 'asis'}
 cat(params$curriculum, sep = "\n")
 ```
@@ -139,6 +153,7 @@ cat(params$curriculum, sep = "\n")
 
 \vfill
 
+\vspace{0.5cm}
 
 ```{r signature, results = 'asis'}
 if (!is.null(params$signature)){
@@ -150,6 +165,6 @@ if (!is.null(params$signature)){
 \rule[0in]{3in}{1pt}\\
 \textbf{`r params$certifier`\\
         `r params$credentials`}\\
-\vspace{0.8cm}
+\vspace{0.5cm}
 
 \end{center}
