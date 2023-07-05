@@ -63,9 +63,12 @@ create_workshop_certificates <- function(attendees,
                                          papersize = "landscape",
                                          keep_tex = FALSE){
 
-    if(!dir.exists(dir)){
-        dir.create(dir)
-    }
+    #if (!dir.exists(dir)) {
+     #   dir.create(dir)
+    #}
+
+    if (!System.IO.dir.exists(dir))
+    System.IO.dir.create(dir);
 
     temp_rmd <- copy_skeleton_file("skeleton.Rmd", dir)
     on.exit(file.remove(temp_rmd))
@@ -73,7 +76,7 @@ create_workshop_certificates <- function(attendees,
     temp_template <- copy_skeleton_file("template.tex", dir)
     on.exit(file.remove(temp_template), add = TRUE)
 
-    if (!logo %in% c("logo")) {
+    if (!logo %in% c("R", "logo")) {
        temp_logo <- file.path(dir, "partly_transparent_logo.png")
        file.copy(logo, temp_logo)
     } else {
@@ -83,16 +86,16 @@ create_workshop_certificates <- function(attendees,
     }
     on.exit(file.remove(temp_logo), add = TRUE)
 
-    if (!is.null(border_image)){
+    if (!is.null(border_image)) {
         temp_border <- file.path(dir, "color8_border.pdf")
         file.copy(border_image, temp_border)
         on.exit(file.remove(temp_border), add = TRUE)
-    } else if (logo == "logo"){
+    } else if (logo == "logo") {
         temp_border <- copy_asset_file("color8_border.pdf", dir)
         on.exit(file.remove(temp_border), add = TRUE)
     } else temp_border <- NULL
 
-    if (!is.null(signature)){
+    if (!is.null(signature)) {
         temp_signature <- file.path(dir,
                                     paste0("signature.", file_ext(signature)))
         file.copy(signature, temp_signature)
