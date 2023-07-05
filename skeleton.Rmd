@@ -94,15 +94,15 @@ knitr::opts_chunk$set(echo = FALSE,
 # thanks so much https://stackoverflow.com/questions/46226364/passing-parameters-in-rmarkdown-to-the-text-or-headings
 cat(params$attendee)
 ```
-\itshape
 }
 
 \vspace{1.3cm}
 
-\normalsize 
+\normalsize \textbf {
 ```{r action_text, results = 'asis'}
 cat(as.character(params$action_text), "\n")
 ```
+}
 
 \vspace{0.8cm}
 
@@ -121,7 +121,7 @@ cat("em ", as.character(params$date), " na comunidade ", params$location, "\n", 
 
 \vspace{0.5cm}
 
-\Large \textbf{
+\Large \textbf {
 ```{r curriculum_title, results = 'asis'}
 cat(params$curriculum_title, "\n", sep = "")
 ```
@@ -129,7 +129,7 @@ cat(params$curriculum_title, "\n", sep = "")
 
 \vspace{0.5cm}
 
-\normalsize
+\normalsize 
 \begin{varwidth}{0.8\textwidth}
 ```{r curriculum, results = 'asis'}
 cat(params$curriculum, sep = "\n")
