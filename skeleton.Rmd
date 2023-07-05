@@ -89,11 +89,12 @@ knitr::opts_chunk$set(echo = FALSE,
 
 \begin{center}
 
-\Large \textbf \bfseries{
+\Large \textbf {
 ```{r attendee, results = 'asis'}
 # thanks so much https://stackoverflow.com/questions/46226364/passing-parameters-in-rmarkdown-to-the-text-or-headings
 cat(params$attendee)
 ```
+\itshape
 }
 
 \vspace{1.3cm}
