@@ -60,7 +60,7 @@ create_workshop_certificates <- function(attendees,
                                          curriculum_title = "Conteúdos do curso:",
                                          signature = NULL, signature_skip = -0.4,
                                          logo = "R", border_image = NULL,
-                                         papersize = "a4paper",
+                                         papersize = "landscape",
                                          keep_tex = FALSE){
 
     if(!dir.exists(dir)){
@@ -73,11 +73,11 @@ create_workshop_certificates <- function(attendees,
     temp_template <- copy_skeleton_file("template.tex", dir)
     on.exit(file.remove(temp_template), add = TRUE)
 
-    if (!logo %in% c("Forwards")) {
+    if (!logo %in% c("logo")) {
        temp_logo <- file.path(dir, "partly_transparent_logo.png")
        file.copy(logo, temp_logo)
     } else {
-        logo_file <- switch(logo, "Forwards" = "partly_transparent_logo.png")
+        logo_file <- switch(logo, "logo" = "partly_transparent_logo.png")
         temp_logo <- copy_asset_file(logo_file, "partly_transparent_logo.png",
                                      dir)
     }
@@ -87,7 +87,7 @@ create_workshop_certificates <- function(attendees,
         temp_border <- file.path(dir, "color8_border.pdf")
         file.copy(border_image, temp_border)
         on.exit(file.remove(temp_border), add = TRUE)
-    } else if (logo == "Forwards"){
+    } else if (logo == "logo"){
         temp_border <- copy_asset_file("color8_border.pdf", dir)
         on.exit(file.remove(temp_border), add = TRUE)
     } else temp_border <- NULL
@@ -125,12 +125,13 @@ create_workshop_certificate <- function(attendee,
                                         curriculum_title = "Conteúdos do curso:",
                                         curriculum,
                                         certifier, credentials,
-                                        organization = "R Contribution Working Group\n",
-                                        organization_url = "contributor.r-project.org",
+                                        credentials2,
+                                        organization = "R-Ladies é uma organização mundial que tem a missão de promover a diversidade de gêneros na comunidade do R",
+                                        organization_url = "rladies.org/",
                                         signature = NULL,
                                         signature_skip = signature_skip,
                                         border_image = NULL,
-                                        papersize = "a4paper",
+                                        papersize = "landscape",
                                         dir = "C:/Users/jeann/Documents/R-Ladies Natal/certificados_rladies_natal",
                                         keep_tex = FALSE){
     output_file_name <- to_snake_case(paste(workshop, date, attendee),
