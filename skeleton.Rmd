@@ -9,11 +9,11 @@ fontsize: 14pt
 params:
   title: 
     label: Title for certificate
-    value: "CERTIFICADO DE CONCLUSÃO"
+    value: "CERTIFICATE OF CONCLUSION"
     input: text
   attendee:
     label: Attendee
-    value: Nome do participante
+    value: Participant's name
     input: text
   action_text: 
     label: Action text between name and workshop title.
