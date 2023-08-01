@@ -17,11 +17,11 @@ params:
     input: text
   action_text: 
     label: Action text between name and workshop title.
-    value: "participou do meetup"
+    value: "Attended the Meetup"
     input: text
   workshop:
     label: Workshop title
-    value: Nome do curso
+    value: Event name
     input: text
   date: 
     label: Date of workshop
