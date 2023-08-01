@@ -1,0 +1,170 @@
+---
+output: 
+    pdf_document: 
+        latex_engine: xelatex
+        template: template.tex
+        keep_tex: true
+documentclass: extarticle        
+fontsize: 14pt
+params:
+  title: 
+    label: Title for certificate
+    value: "CERTIFICATE OF CONCLUSION"
+    input: text
+  attendee:
+    label: Attendee
+    value: Participant's name
+    input: text
+  action_text: 
+    label: Action text between name and workshop title.
+    value: "Attended the Meetup"
+    input: text
+  workshop:
+    label: Workshop title
+    value: Event name
+    input: text
+  date: 
+    label: Date of workshop
+    value: !r lubridate::today() #format(Sys.time(), "%b %d %Y")
+    input: date
+  location:
+    label: Location of workshop
+    value: R-Ladies (city)
+    input: text
+  hora:
+    label: Carga horária do curso
+    value: "Hours of Instruction: X hours"
+    input: text
+  curriculum_title:
+    lable: Header before curriculum content
+    value: "Course contents:"
+    input: text
+  curriculum:
+    label: Path to file containing curriculum content
+    value: "content 1; content 2; content 3; content 4; content 5; content 6; content 7; content 8; content 9; content 10..."
+    input: text
+  certifier:
+    label: Certifying person full name
+    value: Name of the event organizer
+  credentials:
+    label: Certifying person credentials
+    value: Organizer
+    input: text
+  organization:
+    label: Decription of the organization running the workshops
+    value: R-Ladies is a worldwide organization whose mission is to promote gender diversity in the R community
+    input: text
+  organization_url:
+    label: Organization URL without https://
+    value: rladies.org/
+    input: text
+  signature:
+    label: Path to file containing image of signature
+    value: NULL
+    input: file
+  signature_skip:
+    label: Space to skip between signature image and signature line, in cm.
+    value: -0.4
+    input: numeric
+  border_image:
+    label: Path to file containing border image
+    value: !r system.file("rmarkdown", "extdata","assets")
+    input: file
+  papersize:
+    label: Paper size of output PDF
+    value: landscape
+    input: text    
+---
+
+---
+title: "`r params$title`"
+classoption: "`r params$papersize`"
+organization: "`r gsub("[\r\n]", " ", params$organization)`"
+organization_url: "`r params$organization_url`"
+border_image: "`r 'true'[params$border_image]`"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      message = FALSE,
+                      warning = FALSE, 
+                      fig.align = "center")
+```
+
+\begin{center}
+
+\LARGE \textit {
+```{r attendee, results = 'asis'}
+# thanks so much https://stackoverflow.com/questions/46226364/passing-parameters-in-rmarkdown-to-the-text-or-headings
+cat(params$attendee)
+```
+} 
+
+\vspace{1cm}
+
+\normalsize \textbf {
+```{r action_text, results = 'asis'}
+cat(as.character(params$action_text), "\n")
+```
+}
+
+\vspace{0.5cm}
+
+\large \textbf {
+```{r workshop, results = 'asis'}
+cat(as.character(params$workshop), "\n")
+```
+}
+
+
+\large \textbf{
+```{r location, results = 'asis'}
+cat("on ", as.character(params$date), " at the community ", params$location, "\n", sep = "")
+```
+}
+
+\vspace{0.5cm}
+
+\large {
+```{r carga horaria, results = 'asis'}
+cat(params$hora, "\n", sep = "")
+```
+
+}
+
+\vspace{0.5cm}
+
+\normalsize {
+```{r curriculum_title, results = 'asis'}
+cat(params$curriculum_title, "\n", sep = "")
+```
+}
+
+\vspace{0.5cm}
+
+\normalsize 
+\begin{varwidth}{0.8\textwidth}
+
+```{r curriculum, results = 'asis'}
+cat(params$curriculum, sep = "\n")
+```
+
+\end{varwidth}
+
+\vfill
+
+\vspace{0.5cm}
+
+```{r signature, results = 'asis'}
+if (!is.null(params$signature)) {
+  cat("\\includegraphics[height=2\\baselineskip]{signature} \\vspace{", 
+      params$signature_skip, "cm}")
+}
+```
+
+\rule[0in]{3in}{1pt}\\
+\textbf{`r params$certifier`\\
+        `r params$credentials`}\\
+\vspace{0.5cm}
+
+\end{center}
