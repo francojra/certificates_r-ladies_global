@@ -29,26 +29,26 @@ params:
     input: date
   location:
     label: Location of workshop
-    value: R-Ladies Natal
+    value: R-Ladies (city)
     input: text
   hora:
     label: Carga horária do curso
-    value: "Carga horária: X horas"
+    value: "Hours of Instruction: X hours"
     input: text
   curriculum_title:
     lable: Header before curriculum content
-    value: "Conteúdos do curso:"
+    value: "Course contents:"
     input: text
   curriculum:
     label: Path to file containing curriculum content
-    value: "Conteúdo 1; Conteúdo 2; Conteúdo 3; Conteúdo 4; Conteúdo 5; Conteúdo 6; Conteúdo 7; Conteúdo 8."
+    value: "content 1; content 2; content 3; content 4; content 5; content 6; content 7; content 8."
     input: text
   certifier:
     label: Certifying person full name
-    value: Nome da organizadora do evento
+    value: Name of the event organizer
   credentials:
     label: Certifying person credentials
-    value: Organizadora 
+    value: Organizer
     input: text
   organization:
     label: Decription of the organization running the workshops
