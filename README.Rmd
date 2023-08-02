@@ -63,7 +63,7 @@ An example is included in the **certificate** package.
 ```{r curriculum_chunk}
 curriculum <- system.file("rmarkdown", "templates",
                           "workshop_certificate", "resources",
-                          "conteudos.md", 
+                          "default_workshop_contents.md", 
                           package = "certificate")
 readLines(curriculum)
 ```
