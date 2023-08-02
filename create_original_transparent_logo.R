@@ -3,24 +3,24 @@
 # grConvert 0.1-0
 # https://sjp.co.nz/projects/grconvert/
 library(grConvert)
-convertPicture("logo.jpg", "logo-cairo.svg")
+convertPicture("Rlogo.svg", "Rlogo-cairo.svg")
 
 # grImport2 0.1-3
 # https://sjp.co.nz/projects/grimport2/
 library(grImport2)
-logo <- readPicture("logo-cairo.svg")
+Rlogo <- readPicture("Rlogo-cairo.svg")
 
 # Nothing visible
 library(grid)
 # grid.newpage()
 grid.rect(gp=gpar(col=NA, fill="grey80"))
-grid.picture(logo)
+grid.picture(Rlogo)
 
 # With gridSVG 1.5-1
 # install.packages("gridSVG", repos="http://R-Forge.R-project.org")
 library(gridSVG)
-gridsvg("logo-gridSVG.svg")
-grid.picture(logo, ext="gridSVG")
+gridsvg("Rlogo-gridSVG.svg")
+grid.picture(Rlogo, ext="gridSVG")
 dev.off()
 
 # Figure out which path is the "R"
@@ -36,7 +36,7 @@ library(viridis)
 cols <- magma(10)
 fill <- linearGradient(cols, x0=.5, x1=.5)
 gridSVG.newpage()
-grid.picture(logo, ext="gridSVG")
+grid.picture(Rlogo, ext="gridSVG")
 paths <- grid.grep(gPath("gTree", "gTree", "picComplexPath"),
                    grep=TRUE, global=TRUE, strict=TRUE)
 grid.gradientFill(paths[[2]], fill)
@@ -45,7 +45,7 @@ grid.export("RForwardsLogo-gridSVG.svg")
 # white version
 gridSVG.newpage()
 grid.rect(gp=gpar(col=NA, fill="white"))
-grid.picture(logo, ext="gridSVG")
+grid.picture(Rlogo, ext="gridSVG")
 paths <- grid.grep(gPath("gTree", "gTree", "picComplexPath"),
                    grep=TRUE, global=TRUE, strict=TRUE)
 grid.gradientFill(paths[[2]], fill)
@@ -63,10 +63,10 @@ font <- "Open Sans Extrabold"
 # gridSVG.newpage()
 # Control size and shape of logo a bit more carefully, so we can
 # accurately position label with logo
-bounds <- logo@summary
+bounds <- Rlogo@summary
 ratio <- bounds@yscale[1]/bounds@xscale[2]
 # Also drop the margin to make calculations easier
-grid.picture(logo, expansion=0,
+grid.picture(Rlogo, expansion=0,
              width=1, height=ratio, y=1, just="top", ext="gridSVG")
 paths <- grid.grep(gPath("gTree", "gTree", "picComplexPath"),
                    grep=TRUE, global=TRUE, strict=TRUE)
@@ -91,7 +91,7 @@ dev.off() # Cairo PDF device
 # Import label back in (as shape)
 label <- readPicture("RForwards-label.svg")
 gridSVG.newpage()
-grid.picture(logo, expansion=0,
+grid.picture(Rlogo, expansion=0,
              width=1, height=ratio, y=1, just="top", ext="gridSVG")
 paths <- grid.grep(gPath("gTree", "gTree", "picComplexPath"),
                    grep=TRUE, global=TRUE, strict=TRUE)
@@ -120,6 +120,6 @@ rsvg_png("RForwardsLogo-gridSVG-white.svg", "../apple-touch-icon.png",
 
 # tidy up
 img <- setdiff(list.files(pattern = "(.svg|.pdf|.png)"),
-               c("forwards.svg", "logo.jpg"))
+               c("forwards.svg", "Rlogo.svg"))
 sapply(img, file.remove)
 
