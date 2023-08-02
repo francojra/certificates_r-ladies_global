@@ -41,7 +41,7 @@ params:
     input: text
   curriculum:
     label: Path to file containing curriculum content
-    value: "content 1; content 2; content 3; content 4; content 5; content 6; content 7; content 8; content 9; content 10..."
+    value: "Content 1; Content 2; Content 3; Content 4; Content 5; Content 6; Content 7; Content 8; Content 9; Content 10; Content 11; Content 12; Content 13; Content 14; Content 15; Content 16; Content 17."
     input: text
   certifier:
     label: Certifying person full name
