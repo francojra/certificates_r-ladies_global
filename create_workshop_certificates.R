@@ -67,10 +67,10 @@ create_workshop_certificates <- function(attendees,
         dir.create(dir)
     }
 
-    temp_rmd <- copy_skeleton_file("skeleton.Rmd", dir)
+    temp_rmd <- copy_skeleton_english_file("skeleton_english.Rmd", dir)
     on.exit(file.remove(temp_rmd))
 
-    temp_template <- copy_skeleton_file("template.tex", dir)
+    temp_template <- copy_skeleton_english_file("template.tex", dir)
     on.exit(file.remove(temp_template), add = TRUE)
 
     if (!logo %in% c("R", "logo")) {
@@ -84,11 +84,11 @@ create_workshop_certificates <- function(attendees,
     on.exit(file.remove(temp_logo), add = TRUE)
 
     if (!is.null(border_image)) {
-        temp_border <- file.path(dir, "color8_border.pdf")
+        temp_border <- file.path(dir, "color7_border.pdf")
         file.copy(border_image, temp_border)
         on.exit(file.remove(temp_border), add = TRUE)
     } else if (logo == "logo") {
-        temp_border <- copy_asset_file("color8_border.pdf", dir)
+        temp_border <- copy_asset_file("color7_border.pdf", dir)
         on.exit(file.remove(temp_border), add = TRUE)
     } else temp_border <- NULL
 
@@ -137,7 +137,7 @@ create_workshop_certificate <- function(attendee,
     output_file_name <- to_snake_case(paste(workshop, date, attendee),
                                       sep_in = "[. ]")
     output_file <- paste0(output_file_name, ".pdf")
-    rmarkdown::render(input = file.path(dir, "skeleton.Rmd"),
+    rmarkdown::render(input = file.path(dir, "skeleton_english.Rmd"),
                       output_file = output_file,
                       output_dir = dir,
                       params = list(title = title,
@@ -167,10 +167,10 @@ copy_package_file <- function(old_file, old_dir, new_file, new_dir){
     new_path
 }
 
-copy_skeleton_file <- function(file, new_dir){
+copy_skeleton_english_file <- function(file, new_dir){
     copy_package_file(file,
                       file.path("rmarkdown", "templates",
-                                "workshop_certificate", "skeleton"),
+                                "workshop_certificate", "skeleton_english"),
                       file, new_dir)
 }
 
