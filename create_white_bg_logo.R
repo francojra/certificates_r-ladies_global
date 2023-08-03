@@ -14,7 +14,9 @@ magick::image_composite(logo, operator = "dissolve",
                           compose_args = "60%",
                           gravity = "center") %>%
 magick::image_oilpaint(radius = 10) %>%
-magick::image_write("white_bg_logo.png")
+magick::image_write("logo.png")
+
+## Remove border
 
 magick::image_border(logo, "none", "100x100") %>%
 magick::image_write("partly_transparent_logo_borders.png")
