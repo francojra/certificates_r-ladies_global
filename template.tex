@@ -1,4 +1,4 @@
-\documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$paper,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
+\documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$paper,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{{extarticle}}
 
 % parts used from default template
 
@@ -62,7 +62,7 @@
     $else$
     colframe=Rblue, % colour if image does not exist
     $endif$
-    watermark graphics=partly_transparent_logo.png, % (on top of colback)
+    watermark graphics=logo.png, % (on top of colback)
     watermark zoom=0.9,         % zoom relative to interior of box
     outer arc=0mm, arc=0mm,     % square corners
     boxrule=8pt,                % border thickness

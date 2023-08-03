@@ -41,7 +41,7 @@ params:
     input: text
   curriculum:
     label: Path to file containing curriculum content
-    value: "Content 1; Content 2; Content 3; Content 4; Content 5; Content 6; Content 7; Content 8; Content 9; Content 10; Content 11; Content 12; Content 13; Content 14; Content 15; Content 16; Content 17."
+    value: "Content 1; Content 2; Content 3; Content 4; Content 5; Content 6; Content 7; Content 8; Content 9; Content 10; Content 11; Content 12; Content 13; Content 14; Content 15; Content 16; Content 17; Content 18; Content 19; Content 20."
     input: text
   certifier:
     label: Certifying person full name
@@ -93,7 +93,7 @@ knitr::opts_chunk$set(echo = FALSE,
 
 \begin{center}
 
-\LARGE \textit {
+\LARGE \textbf {
 ```{r attendee, results = 'asis'}
 # thanks so much https://stackoverflow.com/questions/46226364/passing-parameters-in-rmarkdown-to-the-text-or-headings
 cat(params$attendee)
