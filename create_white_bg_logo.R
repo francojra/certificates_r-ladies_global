@@ -11,9 +11,9 @@ height <- magick::image_info(logo)$height
 
 magick::image_blank(height, height, color = "white") %>%
 magick::image_composite(logo, operator = "dissolve",
-                          compose_args = "60%",
+                          compose_args = "50%",
                           gravity = "center") %>%
-magick::image_oilpaint(radius = 10) %>%
+magick::image_scale("500") %>%
 magick::image_write("logo.png")
 
 ## Remove border
