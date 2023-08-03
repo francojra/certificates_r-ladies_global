@@ -1,21 +1,21 @@
+# Load package and image
+
 library("magrittr")
-logo_path <- "logo.jpg"
+logo_path <- "logo-r.png"
 
-# replace transparent background with white background
-# note, this is probably not the best solution
+# Add transparency and watercolor effect
+
 logo <- magick::image_read(logo_path)
+
 height <- magick::image_info(logo)$height
+
 magick::image_blank(height, height, color = "white") %>%
-  magick::image_composite(logo) %>%
-  magick::image_write("white_bg_forwards.png")
+magick::image_composite(logo, operator = "dissolve",
+                          compose_args = "60%",
+                          gravity = "center") %>%
+magick::image_oilpaint(radius = 10) %>%
+magick::image_write("white_bg_logo.png")
 
-bitmap <- logo[[1]]
-bitmap[3,,] <- as.raw(as.integer(bitmap[3,,]) * 0.9)
-newlogo <- magick::image_read(bitmap)
-newlogo %>%
-    magick::image_write("partly_transparent_forwards.png")
-
-magick::image_border(newlogo, "none", "100x100") %>%
-    magick::image_write("partly_transparent_forwards_borders.png")
-
+magick::image_border(logo, "none", "100x100") %>%
+magick::image_write("partly_transparent_logo_borders.png")
 
