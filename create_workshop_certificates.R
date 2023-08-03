@@ -74,11 +74,11 @@ create_workshop_certificates <- function(attendees,
     on.exit(file.remove(temp_template), add = TRUE)
 
     if (!logo %in% c("R", "logo")) {
-       temp_logo <- file.path(dir, "partly_transparent_logo.png")
+       temp_logo <- file.path(dir, "logo.png")
        file.copy(logo, temp_logo)
     } else {
-        logo_file <- switch(logo, "logo" = "partly_transparent_logo.png")
-        temp_logo <- copy_asset_file(logo_file, "partly_transparent_logo.png",
+        logo_file <- switch(logo, "logo" = "logo.png")
+        temp_logo <- copy_asset_file(logo_file, "logo.png",
                                      dir)
     }
     on.exit(file.remove(temp_logo), add = TRUE)
@@ -170,7 +170,8 @@ copy_package_file <- function(old_file, old_dir, new_file, new_dir){
 copy_skeleton_english_file <- function(file, new_dir){
     copy_package_file(file,
                       file.path("rmarkdown", "templates",
-                                "workshop_certificate", "skeleton_english"),
+                                "workshop_certificate",
+                                "skeleton_english"),
                       file, new_dir)
 }
 
