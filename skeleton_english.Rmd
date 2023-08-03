@@ -31,7 +31,7 @@ params:
     label: Location of workshop
     value: R-Ladies (city)
     input: text
-  hora:
+  hours:
     label: Carga horária do curso
     value: "Hours of Instruction: X hours"
     input: text
@@ -117,7 +117,7 @@ cat(as.character(params$workshop), "\n")
 }
 
 
-\large \textbf{
+\large \textbf {
 ```{r location, results = 'asis'}
 cat("on ", as.character(params$date), " at the community ", params$location, "\n", sep = "")
 ```
@@ -126,17 +126,17 @@ cat("on ", as.character(params$date), " at the community ", params$location, "\n
 \vspace{0.5cm}
 
 \large {
-```{r carga horaria, results = 'asis'}
-cat(params$hora, "\n", sep = "")
+```{r hours, results = 'asis', }
+cat(params$hours, "\n", sep = "")
 ```
 
 }
 
 \vspace{0.5cm}
 
-\normalsize {
+\normalsize \textbf {
 ```{r curriculum_title, results = 'asis'}
-cat(params$curriculum_title, "\n", sep = "")
+cat(params$curriculum_title, "\n")
 ```
 }
 
